@@ -100,6 +100,114 @@ speed.addEventListener("input", () => {
   }
 });
 
+// ===== 單一舞步循環練習（YouTube IFrame API）=====
+const PRACTICE_VIDEO_ID = "YRDa_0NO2U4";
+
+// 每個舞步：名稱 + 起始秒數（end 由下一個的 start 自動推算）
+// 時間戳取自影片下方觀眾留言 @mel_etmoa
+const MOVE_TIMES = [
+  { name: "Running man", t: 11 },
+  { name: "Humpty Hump", t: 37 },
+  { name: "Roof top", t: 49 },
+  { name: "Criss Cross", t: 59 },
+  { name: "LL Cool J", t: 77 },
+  { name: "Woah", t: 87 },
+  { name: "Reject", t: 99 },
+  { name: "Butterfly", t: 113 },
+  { name: "Toss it up", t: 128 },
+  { name: "Walk it out", t: 135 },
+  { name: "Aunt viv", t: 146 },
+  { name: "Monastery", t: 156 },
+  { name: "Prep", t: 164 },
+  { name: "Scissors", t: 183 },
+  { name: "Marge", t: 200 },
+  { name: "Locked in", t: 212 },
+  { name: "Heel toe", t: 222 },
+  { name: "Real love", t: 239 },
+  { name: "Robocop", t: 252 },
+];
+
+// 推算每段的 end（最後一個給個合理預設長度）
+const MOVES = MOVE_TIMES.map((m, i) => ({
+  name: m.name,
+  start: m.t,
+  end: i < MOVE_TIMES.length - 1 ? MOVE_TIMES[i + 1].t : m.t + 14,
+}));
+
+const moveListEl = document.getElementById("moveList");
+const nowPlayingEl = document.getElementById("nowPlaying");
+
+let ytPlayer = null;
+let currentMove = null;
+let loopTimer = null;
+
+// 產生舞步按鈕
+MOVES.forEach((move, idx) => {
+  const btn = document.createElement("button");
+  btn.className = "move-btn";
+  btn.dataset.idx = idx;
+  const mm = String(Math.floor(move.start / 60));
+  const ss = String(move.start % 60).padStart(2, "0");
+  btn.innerHTML = `<span class="move-name">${idx + 1}. ${move.name}</span><span class="move-time">${mm}:${ss}</span>`;
+  btn.addEventListener("click", () => playMove(idx));
+  moveListEl.appendChild(btn);
+});
+
+// 載入 YouTube IFrame API
+(function loadYT() {
+  const tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(tag);
+})();
+
+// API 載入完成後的全域 callback
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player("ytPlayer", {
+    videoId: PRACTICE_VIDEO_ID,
+    playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+    events: { onStateChange: onPlayerStateChange },
+  });
+}
+
+function playMove(idx) {
+  const move = MOVES[idx];
+  currentMove = move;
+  nowPlayingEl.textContent = `🔁 循環中：${idx + 1}. ${move.name}`;
+
+  // 高亮目前選的按鈕
+  Array.from(moveListEl.children).forEach((b, i) =>
+    b.classList.toggle("active", i === idx)
+  );
+
+  if (!ytPlayer || !ytPlayer.loadVideoById) return;
+  ytPlayer.loadVideoById({
+    videoId: PRACTICE_VIDEO_ID,
+    startSeconds: move.start,
+    endSeconds: move.end,
+  });
+  startLoopWatch();
+}
+
+// 用輪詢確保播到段尾就跳回段首（比單純 loop 參數更可靠）
+function startLoopWatch() {
+  clearInterval(loopTimer);
+  loopTimer = setInterval(() => {
+    if (!ytPlayer || !currentMove || !ytPlayer.getCurrentTime) return;
+    const tNow = ytPlayer.getCurrentTime();
+    if (tNow >= currentMove.end - 0.25 || tNow < currentMove.start - 1) {
+      ytPlayer.seekTo(currentMove.start, true);
+    }
+  }, 250);
+}
+
+function onPlayerStateChange(e) {
+  // 影片因 endSeconds 結束時，跳回段首繼續循環
+  if (e.data === YT.PlayerState.ENDED && currentMove) {
+    ytPlayer.seekTo(currentMove.start, true);
+    ytPlayer.playVideo();
+  }
+}
+
 // ===== 練習檢查表 =====
 const checklist = document.getElementById("checklist");
 const doneMsg = document.getElementById("doneMsg");

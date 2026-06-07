@@ -97,6 +97,24 @@
       <p class="video-hint">影片皆來自 YouTube 創作者，版權歸原作者所有。若有影片無法播放，多半是作者關閉了嵌入，點影片右下角可在 YouTube 開啟。</p>
     </section>
 
+    <!-- 單一舞步循環練習 -->
+    <section class="practice-section" id="practice">
+      <h2 class="section-title">挑一個舞步，循環練習</h2>
+      <p class="section-desc">點下面任一個舞步，影片會自動跳到那一段並<strong>重複循環播放</strong>，跟著反覆練到熟為止。</p>
+
+      <div class="practice-wrap">
+        <div class="practice-player">
+          <div id="ytPlayer"></div>
+          <p class="now-playing" id="nowPlaying">👆 從右邊挑一個舞步開始</p>
+        </div>
+
+        <div class="move-list" id="moveList" aria-label="舞步清單">
+          <!-- 按鈕由 script.js 依時間戳產生 -->
+        </div>
+      </div>
+      <p class="video-hint">時間戳來自影片底下的觀眾留言（共 19 個舞步）。若還想補齊全部 100 個，把更完整的時間清單貼給我即可。</p>
+    </section>
+
     <!-- 從第一步開始：Two Step -->
     <section class="demo-section" id="first-step">
       <span class="badge">給完全初學者</span>
