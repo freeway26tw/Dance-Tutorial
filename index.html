@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hip Hop 100 個舞步 ｜ 從第一步開始學街舞</title>
+  <meta name="description" content="Hip Hop 100 個經典舞步影片大全，並從最基礎的 Two Step 帶你踏出第一步。專為初學者設計。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 頂部 Hero -->
+  <header class="hero">
+    <nav class="nav">
+      <span class="logo">🔥 Hip Hop 100 Steps</span>
+      <a class="nav-link" href="#hundred">看 100 個舞步</a>
+    </nav>
+    <div class="hero-inner">
+      <p class="eyebrow">老學校到新學校・一次看懂</p>
+      <h1>Hip Hop <span class="accent">100 個舞步</span></h1>
+      <p class="subtitle">100 個經典街舞舞步，每個都有名稱。先看大全找靈感，再從最基礎的第一步開始練。</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="#hundred">▶ 看 100 個舞步</a>
+        <a class="btn btn-ghost" href="#first-step">從第一步開始 →</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 主打：100 個舞步影片 -->
+    <section class="video-section" id="hundred">
+      <h2 class="section-title">100 個 Hip Hop 舞步大全</h2>
+      <p class="section-desc">完整收錄 100 個舞步與名稱，老學校、新學校都有。慢慢看，挑你喜歡的開始練。</p>
+
+      <div class="video-frame">
+        <iframe
+          id="mainVideo"
+          src="https://www.youtube.com/embed/YRDa_0NO2U4"
+          title="100 HIP HOP Dance Steps and Moves with Names"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-hint">主打：100 HIP HOP Dance Steps and Moves with Names（每個舞步都有名稱）</p>
+
+      <!-- 更多 100 steps 影片 -->
+      <h3 class="video-more-title">更多 100 步影片資源</h3>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="thumb">
+            <iframe
+              src="https://www.youtube.com/embed/BMDEC7TxcQs"
+              title="100 steps for hip hop dance by Maximus / Mad State"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="meta">
+            <h3>Maximus 100 Steps</h3>
+            <p>Mad State / Explosion Team 的 100 步示範。</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="thumb">
+            <iframe
+              src="https://www.youtube.com/embed/UhmLmjxk5co"
+              title="100 HIP-HOP DANCE STEPS - All hiphop dance basics"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="meta">
+            <h3>100 Hip-Hop Dance Steps</h3>
+            <p>完整基礎 100 步，適合系統性練習。</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="thumb">
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list=PLonVopbGAB0ezxE9G0kSycxuwt9opWQNy"
+              title="100 HIP HOP DANCE STEPS WITH NAMES 播放清單"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="meta">
+            <h3>100 步 with Names（播放清單）</h3>
+            <p>拆成多支的清單版，方便逐步收藏。</p>
+          </div>
+        </div>
+      </div>
+      <p class="video-hint">影片皆來自 YouTube 創作者，版權歸原作者所有。若有影片無法播放，多半是作者關閉了嵌入，點影片右下角可在 YouTube 開啟。</p>
+    </section>
+
+    <!-- 單一舞步循環練習 -->
+    <section class="practice-section" id="practice">
+      <h2 class="section-title">挑一個舞步，循環練習</h2>
+      <p class="section-desc">點下面任一個舞步，影片會自動跳到那一段並<strong>重複循環播放</strong>，跟著反覆練到熟為止。</p>
+
+      <div class="practice-wrap">
+        <div class="practice-player">
+          <div id="ytPlayer"></div>
+          <p class="now-playing" id="nowPlaying">👆 從右邊挑一個舞步開始</p>
+          <div class="speed-controls" id="speedControls">
+            <span class="speed-label">播放速度</span>
+            <button class="speed-btn" data-rate="0.5">0.5x</button>
+            <button class="speed-btn" data-rate="0.75">0.75x</button>
+            <button class="speed-btn active" data-rate="1">1x</button>
+          </div>
+        </div>
+
+        <div class="move-panel">
+          <input type="search" id="moveSearch" class="move-search" placeholder="🔍 搜尋舞步…（例如 Dougie）" />
+          <div class="move-list" id="moveList" aria-label="舞步清單">
+            <!-- 按鈕由 script.js 依時間戳產生 -->
+          </div>
+        </div>
+      </div>
+      <p class="video-hint">收錄 105 個舞步，時間戳來自影片底下的觀眾留言。點清單即可跳到該段循環練習。</p>
+    </section>
+
+    <!-- 從第一步開始：Two Step -->
+    <section class="demo-section" id="first-step">
+      <span class="badge">給完全初學者</span>
+      <h2 class="section-title">第一步：先學會 Two Step</h2>
+      <p class="section-desc">100 個舞步看起來很多，但幾乎所有人都從 Two Step 開始。跟著小人左右移動，3 分鐘踏出第一步。</p>
+
+      <div class="demo-wrap">
+        <!-- 火柴人舞台 -->
+        <div class="stage" aria-label="Two Step 動畫示範">
+          <div class="dancer" id="dancer">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arm arm-left"></div>
+            <div class="arm arm-right"></div>
+            <div class="leg leg-left"></div>
+            <div class="leg leg-right"></div>
+          </div>
+          <div class="floor"></div>
+          <div class="beat-label" id="beatLabel">準備好了嗎？</div>
+        </div>
+
+        <!-- 控制面板 -->
+        <div class="controls">
+          <button class="btn btn-primary" id="playBtn">▶ 播放示範</button>
+
+          <div class="control-row">
+            <label for="speed">速度</label>
+            <input type="range" id="speed" min="0.5" max="1.5" step="0.1" value="1" />
+            <span id="speedVal">正常</span>
+          </div>
+
+          <div class="metronome">
+            <span class="metro-title">節拍</span>
+            <div class="beats">
+              <span class="beat-dot" data-beat="1">1</span>
+              <span class="beat-dot" data-beat="2">2</span>
+              <span class="beat-dot" data-beat="3">3</span>
+              <span class="beat-dot" data-beat="4">4</span>
+            </div>
+            <label class="sound-toggle">
+              <input type="checkbox" id="soundToggle" /> 開啟節拍聲
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 圖文分解步驟 -->
+    <section class="steps-section">
+      <h2 class="section-title">Two Step 分解步驟</h2>
+      <p class="section-desc">Two Step 其實只有 4 拍，記住「踏 → 併 → 踏 → 併」就對了。</p>
+
+      <div class="steps-grid">
+        <article class="step-card" data-step="1">
+          <div class="step-num">1</div>
+          <div class="step-feet">
+            <span class="foot foot-move">👟</span>
+            <span class="foot">👟</span>
+          </div>
+          <h3>右腳往右踏</h3>
+          <p>第 1 拍：右腳向右跨一步，重心跟著移過去。</p>
+        </article>
+
+        <article class="step-card" data-step="2">
+          <div class="step-num">2</div>
+          <div class="step-feet">
+            <span class="foot">👟</span>
+            <span class="foot foot-move">👟</span>
+          </div>
+          <h3>左腳併過去</h3>
+          <p>第 2 拍：左腳靠到右腳旁邊，輕輕點地。</p>
+        </article>
+
+        <article class="step-card" data-step="3">
+          <div class="step-num">3</div>
+          <div class="step-feet">
+            <span class="foot">👟</span>
+            <span class="foot foot-move">👟</span>
+          </div>
+          <h3>左腳往左踏</h3>
+          <p>第 3 拍：換邊，左腳向左跨一步，重心移回來。</p>
+        </article>
+
+        <article class="step-card" data-step="4">
+          <div class="step-num">4</div>
+          <div class="step-feet">
+            <span class="foot foot-move">👟</span>
+            <span class="foot">👟</span>
+          </div>
+          <h3>右腳併過去</h3>
+          <p>第 4 拍：右腳靠回左腳旁邊。完成一輪，再從頭循環！</p>
+        </article>
+      </div>
+
+      <div class="tip-box">
+        <strong>💡 小撇步：</strong>膝蓋保持微彎、肩膀放鬆，跟著拍子輕輕上下律動，看起來會更自然。先求穩，再求快。學會 Two Step 後，就回到上面的 100 個舞步挑下一個來練吧！
+      </div>
+    </section>
+
+    <!-- 練習檢查表 -->
+    <section class="checklist-section">
+      <h2 class="section-title">練習檢查表</h2>
+      <p class="section-desc">勾掉每一項，恭喜你就踏出 Hip Hop 的第一步了！</p>
+      <ul class="checklist" id="checklist">
+        <li><label><input type="checkbox" /> 能慢慢做出「踏、併、踏、併」4 拍</label></li>
+        <li><label><input type="checkbox" /> 跟著節拍器不會亂掉</label></li>
+        <li><label><input type="checkbox" /> 膝蓋有跟著律動、肩膀放鬆</label></li>
+        <li><label><input type="checkbox" /> 從 100 個舞步裡挑了下一個想學的</label></li>
+      </ul>
+      <p class="done-msg" id="doneMsg" hidden>🎉 太棒了！你已經踏出第一步，接著就從 100 個舞步裡繼續征服吧！</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>用 ❤️ 為初學者打造 ｜ Hip Hop 100 Steps</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
