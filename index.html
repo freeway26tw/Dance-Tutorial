@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>學會 Two Step ｜ 初學者一個動作就上手</title>
+  <meta name="description" content="專為初學者設計，一頁學會最基礎的舞蹈動作 Two Step。圖文分解步驟、節拍器、互動示範。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 頂部 Hero -->
+  <header class="hero">
+    <nav class="nav">
+      <span class="logo">🕺 Two Step 教室</span>
+      <a class="nav-link" href="#learn">開始學</a>
+    </nav>
+    <div class="hero-inner">
+      <p class="eyebrow">給完全沒跳過舞的你</p>
+      <h1>一頁學會 <span class="accent">Two Step</span></h1>
+      <p class="subtitle">最基礎、最百搭的舞步。跟著節拍左右移動，3 分鐘就能踏出第一步。</p>
+      <a class="btn btn-primary" href="#learn">我要開始 →</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 火柴人示範 + 節拍器 -->
+    <section class="demo-section" id="learn">
+      <h2 class="section-title">動作示範</h2>
+      <p class="section-desc">看著小人怎麼動，再跟著一起做。可以調整速度，慢慢來。</p>
+
+      <div class="demo-wrap">
+        <!-- 火柴人舞台 -->
+        <div class="stage" aria-label="Two Step 動畫示範">
+          <div class="dancer" id="dancer">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arm arm-left"></div>
+            <div class="arm arm-right"></div>
+            <div class="leg leg-left"></div>
+            <div class="leg leg-right"></div>
+          </div>
+          <div class="floor"></div>
+          <div class="beat-label" id="beatLabel">準備好了嗎？</div>
+        </div>
+
+        <!-- 控制面板 -->
+        <div class="controls">
+          <button class="btn btn-primary" id="playBtn">▶ 播放示範</button>
+
+          <div class="control-row">
+            <label for="speed">速度</label>
+            <input type="range" id="speed" min="0.5" max="1.5" step="0.1" value="1" />
+            <span id="speedVal">正常</span>
+          </div>
+
+          <div class="metronome">
+            <span class="metro-title">節拍</span>
+            <div class="beats">
+              <span class="beat-dot" data-beat="1">1</span>
+              <span class="beat-dot" data-beat="2">2</span>
+              <span class="beat-dot" data-beat="3">3</span>
+              <span class="beat-dot" data-beat="4">4</span>
+            </div>
+            <label class="sound-toggle">
+              <input type="checkbox" id="soundToggle" /> 開啟節拍聲
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 圖文分解步驟 -->
+    <section class="steps-section">
+      <h2 class="section-title">分解步驟</h2>
+      <p class="section-desc">Two Step 其實只有 4 拍，記住「踏 → 併 → 踏 → 併」就對了。</p>
+
+      <div class="steps-grid">
+        <article class="step-card" data-step="1">
+          <div class="step-num">1</div>
+          <div class="step-feet">
+            <span class="foot foot-move">👟</span>
+            <span class="foot">👟</span>
+          </div>
+          <h3>右腳往右踏</h3>
+          <p>第 1 拍：右腳向右跨一步，重心跟著移過去。</p>
+        </article>
+
+        <article class="step-card" data-step="2">
+          <div class="step-num">2</div>
+          <div class="step-feet">
+            <span class="foot">👟</span>
+            <span class="foot foot-move">👟</span>
+          </div>
+          <h3>左腳併過去</h3>
+          <p>第 2 拍：左腳靠到右腳旁邊，輕輕點地。</p>
+        </article>
+
+        <article class="step-card" data-step="3">
+          <div class="step-num">3</div>
+          <div class="step-feet">
+            <span class="foot">👟</span>
+            <span class="foot foot-move">👟</span>
+          </div>
+          <h3>左腳往左踏</h3>
+          <p>第 3 拍：換邊，左腳向左跨一步，重心移回來。</p>
+        </article>
+
+        <article class="step-card" data-step="4">
+          <div class="step-num">4</div>
+          <div class="step-feet">
+            <span class="foot foot-move">👟</span>
+            <span class="foot">👟</span>
+          </div>
+          <h3>右腳併過去</h3>
+          <p>第 4 拍：右腳靠回左腳旁邊。完成一輪，再從頭循環！</p>
+        </article>
+      </div>
+
+      <div class="tip-box">
+        <strong>💡 小撇步：</strong>膝蓋保持微彎、肩膀放鬆，跟著拍子輕輕上下律動，看起來會更自然。先求穩，再求快。
+      </div>
+    </section>
+
+    <!-- 影片嵌入區 -->
+    <section class="video-section">
+      <h2 class="section-title">影片教學</h2>
+      <p class="section-desc">看真人示範最清楚。下面是精選的 Two Step 教學影片，跟著一起練。</p>
+
+      <!-- 主打影片 -->
+      <div class="video-frame">
+        <iframe
+          id="tutorialVideo"
+          src="https://www.youtube.com/embed/8RWG6Wu5aJw"
+          title="Basic Hip Hop Dance Moves For Beginners - The Two Step"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-hint">主打教學：The Two Step（適合完全初學者）</p>
+
+      <!-- 更多影片 -->
+      <h3 class="video-more-title">更多嘻哈基礎資源</h3>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="thumb">
+            <iframe
+              src="https://www.youtube.com/embed/S_-8P2Cuus0"
+              title="3 Ways To Master Your 2 Step"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="meta">
+            <h3>3 種方式練好 2 Step</h3>
+            <p>進階變化，學會基礎後挑戰看看。</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="thumb">
+            <iframe
+              src="https://www.youtube.com/embed/xQLQmZ0XqJ8"
+              title="五分鐘學跳舞 嘻哈從零開始 HIPHOP基礎舞步教學"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="meta">
+            <h3>五分鐘學跳舞（中文）</h3>
+            <p>嘻哈從零開始・HIPHOP 基礎舞步教學。</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="thumb">
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list=PLhEgoCNnTcdAAdAY9HfWaPpK3nfULaki4"
+              title="街舞動作大全 HIPHOP Step 播放清單"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="meta">
+            <h3>街舞動作大全（播放清單）</h3>
+            <p>各種 HIPHOP Step 一次看，當作進階字典。</p>
+          </div>
+        </div>
+      </div>
+      <p class="video-hint">影片皆來自 YouTube 創作者，版權歸原作者所有。想換成自己的影片，編輯 <code>index.html</code> 的 iframe <code>src</code> 即可。</p>
+    </section>
+
+    <!-- 練習檢查表 -->
+    <section class="checklist-section">
+      <h2 class="section-title">練習檢查表</h2>
+      <p class="section-desc">勾掉每一項，恭喜你就學會 Two Step 了！</p>
+      <ul class="checklist" id="checklist">
+        <li><label><input type="checkbox" /> 能慢慢做出「踏、併、踏、併」4 拍</label></li>
+        <li><label><input type="checkbox" /> 跟著節拍器不會亂掉</label></li>
+        <li><label><input type="checkbox" /> 膝蓋有跟著律動、肩膀放鬆</label></li>
+        <li><label><input type="checkbox" /> 不用看畫面也能連續做 8 個八拍</label></li>
+      </ul>
+      <p class="done-msg" id="doneMsg" hidden>🎉 太棒了！你已經學會 Two Step，可以放音樂享受了！</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>用 ❤️ 為初學者打造 ｜ Two Step 教室</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
