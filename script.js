@@ -292,6 +292,41 @@ function onPlayerStateChange(e) {
     ytPlayer.seekTo(currentMove.start, true);
     ytPlayer.playVideo();
   }
+  // 切換舞步後 YouTube 會重設速度，這裡播放時補回使用者選的速度
+  if (
+    e.data === YT.PlayerState.PLAYING &&
+    ytPlayer.getPlaybackRate &&
+    ytPlayer.getPlaybackRate() !== currentRate
+  ) {
+    ytPlayer.setPlaybackRate(currentRate);
+  }
+}
+
+// ----- 搜尋舞步 -----
+const moveSearch = document.getElementById("moveSearch");
+if (moveSearch) {
+  moveSearch.addEventListener("input", () => {
+    const q = moveSearch.value.trim().toLowerCase();
+    Array.from(moveListEl.children).forEach((btn) => {
+      const name = MOVES[+btn.dataset.idx].name.toLowerCase();
+      btn.style.display = name.includes(q) ? "" : "none";
+    });
+  });
+}
+
+// ----- 播放速度 -----
+let currentRate = 1;
+const speedControls = document.getElementById("speedControls");
+if (speedControls) {
+  speedControls.addEventListener("click", (e) => {
+    const b = e.target.closest(".speed-btn");
+    if (!b) return;
+    currentRate = parseFloat(b.dataset.rate);
+    speedControls
+      .querySelectorAll(".speed-btn")
+      .forEach((x) => x.classList.toggle("active", x === b));
+    if (ytPlayer && ytPlayer.setPlaybackRate) ytPlayer.setPlaybackRate(currentRate);
+  });
 }
 
 // ===== 練習檢查表 =====

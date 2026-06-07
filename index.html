@@ -106,10 +106,19 @@
         <div class="practice-player">
           <div id="ytPlayer"></div>
           <p class="now-playing" id="nowPlaying">👆 從右邊挑一個舞步開始</p>
+          <div class="speed-controls" id="speedControls">
+            <span class="speed-label">播放速度</span>
+            <button class="speed-btn" data-rate="0.5">0.5x</button>
+            <button class="speed-btn" data-rate="0.75">0.75x</button>
+            <button class="speed-btn active" data-rate="1">1x</button>
+          </div>
         </div>
 
-        <div class="move-list" id="moveList" aria-label="舞步清單">
-          <!-- 按鈕由 script.js 依時間戳產生 -->
+        <div class="move-panel">
+          <input type="search" id="moveSearch" class="move-search" placeholder="🔍 搜尋舞步…（例如 Dougie）" />
+          <div class="move-list" id="moveList" aria-label="舞步清單">
+            <!-- 按鈕由 script.js 依時間戳產生 -->
+          </div>
         </div>
       </div>
       <p class="video-hint">收錄 105 個舞步，時間戳來自影片底下的觀眾留言。點清單即可跳到該段循環練習。</p>
